@@ -9,7 +9,9 @@
    */
   var AboutCard = function() {
     this.$openBtn = $("#sidebar, #header").find("a[href*='#about']");
-    this.$closeBtn = $('#about-btn-close');
+      this.$closeBtn = $('#about-btn-close');
+      this.$moreBtn = $('#about-card-more-link');
+      this.$moreBtnLink = $("#about-card-more-link").attr("data-link");
     this.$blog = $('#blog');
     this.$about = $('#about');
     this.$aboutCard = $('#about-card');
@@ -33,6 +35,11 @@
         e.preventDefault();
         self.playBack();
       });
+        // Detect click on more button
+        self.$moreBtn.click(function(e) {
+            e.preventDefault();
+            self.playBackWithRedirect();
+        });
     },
 
     /**
@@ -69,6 +76,27 @@
         self.$about.fadeOut();
       }, 500);
     },
+
+      /**
+       * Play back the animation with ridirect
+       * @return {void}
+       */
+      playBackWithRedirect: function() {
+          var self = this;
+          // Lift the about card
+          self.liftAboutCard();
+          // Fade in the blog after that the about card lifted up
+          setTimeout(function() {
+              self.$blog.fadeIn();
+          }, 500);
+          // Fade out the about card after that the about card lifted up
+          setTimeout(function() {
+              self.$about.fadeOut();
+              setTimeout(function() {
+                  window.location.replace(self.$moreBtnLink);
+              }, 500);
+          }, 500);
+      },
 
     /**
      * Slide the card to the middle

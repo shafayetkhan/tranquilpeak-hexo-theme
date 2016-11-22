@@ -21,6 +21,13 @@
         <% if (__('author.bio')) { %>
             <div id="about-card-bio"><%- markdown(__('author.bio')) %></div>
         <% } %>
+        <% if (__('author.more')) { %>
+            <div id="about-card-more">
+                <span id="about-card-more-link" data-link="<%= url_for(__('author.more')) %>">
+                    learn more
+                </span>
+            </div>
+        <% } %>
         <% if (__('author.job')) { %>
             <div id="about-card-job">
                 <i class="fa fa-briefcase"></i>
