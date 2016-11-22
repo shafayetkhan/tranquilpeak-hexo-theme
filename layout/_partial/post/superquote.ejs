@@ -1,0 +1,14 @@
+<div class="superquote">
+    <blockquote>
+        <% if (post.superquote) { %>
+            <p>
+                <%= post.superquote %>
+            </p>
+        <% } %>
+        <% if (post.superquoteAuthor) { %>
+            <p class="superquote-pull-right">
+               - <%= post.superquoteAuthor %>
+            </p>
+        <% } %>
+    </blockquote>
+</div>

@@ -1,0 +1,19 @@
+div.superquote {
+    margin-bottom: 30px !important;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    color: $font-color-base;
+}
+
+div.superquote blockquote {
+    max-width: 500px !important;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-style: normal !important;
+}
+
+div.superquote blockquote p.superquote-pull-right {
+    float: right !important;
+}

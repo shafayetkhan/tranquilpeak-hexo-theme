@@ -25,6 +25,9 @@
         <span class="post-header-cover-caption caption"><%= post.coverCaption %></span>
     <% } %>
     <% if (!post.coverImage || post.coverMeta === 'out') { %>
+        <% if (post.superquote) { %>
+            <%- partial('post/superquote')%>
+        <% } %>
         <%- partial('post/header')%>
     <% } %>
     <div class="post-content markdown" itemprop="articleBody">
