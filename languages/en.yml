@@ -57,6 +57,7 @@ post:
 
 author:
     # Your biography (Markdown and HTML supported)
-    bio: ""
+    bio: "polygot technologist\nbuilding things, mostly software"
     # Your job
-    job: ""
+    job: "embedded engineer"
+    more: /hello-world
