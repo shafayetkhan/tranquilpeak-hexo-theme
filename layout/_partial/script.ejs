@@ -3,40 +3,44 @@
 <%- js('assets/js/jquery.fancybox.js') %>
 <%- js('assets/js/jquery.fancybox-thumbs.js') %>
 <%- js('assets/js/tranquilpeak.js') %>
+<% if (is_home()) { %>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<% } %>
+
 <!--SCRIPTS END-->
 <% if (post.comments) { %>
     <% if (theme.disqus_shortname) { %>
-        <script>
-             var disqus_config = function () {
-                 this.page.url = '<%= post.permalink %>';
-                 <% if (post.disqusIdentifier) { %>
-                    this.page.identifier = '<%= post.disqusIdentifier %>';
-                 <% } else { %>
-                    this.page.identifier = '<%= post.path %>';
-                 <% } %>
-             };
-            (function() {
-                var d = document, s = d.createElement('script');
-                var disqus_shortname = '<%= theme.disqus_shortname %>';
-                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      <script>
+       var disqus_config = function () {
+           this.page.url = '<%= post.permalink %>';
+           <% if (post.disqusIdentifier) { %>
+           this.page.identifier = '<%= post.disqusIdentifier %>';
+           <% } else { %>
+           this.page.identifier = '<%= post.path %>';
+           <% } %>
+       };
+       (function() {
+           var d = document, s = d.createElement('script');
+           var disqus_shortname = '<%= theme.disqus_shortname %>';
+           s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
 
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
+           s.setAttribute('data-timestamp', +new Date());
+           (d.head || d.body).appendChild(s);
+       })();
+      </script>
     <% } else if (theme.duoshuo_shortname) { %>
-        <script type="text/javascript">
-            var duoshuoQuery = {short_name:'<%= theme.duoshuo_shortname %>'};
-            (function() {
-                var ds = document.createElement('script');
-                ds.type = 'text/javascript';ds.async = true;
-                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-                ds.charset = 'UTF-8';
-                (document.getElementsByTagName('head')[0]
-                || document.getElementsByTagName('body')[0]).appendChild(ds);
-            })();
-        </script>
-    <% } %>
+    <script type="text/javascript">
+     var duoshuoQuery = {short_name:'<%= theme.duoshuo_shortname %>'};
+     (function() {
+         var ds = document.createElement('script');
+         ds.type = 'text/javascript';ds.async = true;
+         ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+         ds.charset = 'UTF-8';
+         (document.getElementsByTagName('head')[0]
+       || document.getElementsByTagName('body')[0]).appendChild(ds);
+     })();
+    </script>
+<% } %>
 <% } %>
 <% if (theme.swiftype_install_key) { %>
     <script type="text/javascript">
