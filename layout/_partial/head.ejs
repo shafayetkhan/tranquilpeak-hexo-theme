@@ -163,11 +163,10 @@
     <%- css('assets/css/jquery.fancybox.css') %>
     <%- css('assets/css/jquery.fancybox-thumbs.css') %>
     <%- css('assets/css/tranquilpeak.css') %>
-  <% if (is_home()) { %>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
-  <% } %>
     <!--STYLES END-->
+  <!--CDNSTYLES-->
+  <%- partial('cdn-style') %>
+  <!--CDNSTYLES END-->
     <%- partial('google-analytics') %>
     <%- partial('baidu-analytics') %>
 
