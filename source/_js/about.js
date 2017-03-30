@@ -52,10 +52,6 @@
       self.$blog.fadeOut();
       // Fade in the about card
       self.$about.fadeIn();
-      // Unslick the tweets to avoid ill-format in homepage
-      if ($('.tweets-container').length) {
-        self._unslick();
-      }
       // Small timeout to drop the about card after that
       // the about card fade in and the blog fade out
       setTimeout(function() {
@@ -76,7 +72,7 @@
         self.$blog.fadeIn();
         // Initialize slick once blog is restored in homepage
         if ($('.tweets-container').length) {
-          self._initSlick();
+          self.refreshSlick();
         }
       }, 500);
       // Fade out the about card after that the about card lifted up
@@ -98,7 +94,7 @@
               self.$blog.fadeIn();
             if ($('.tweets-container').length) {
               // Initialize slick once blog is restored in homepage
-              self._initSlick();
+              self.refreshSlick();
             }
           }, 500);
           // Fade out the about card after that the about card lifted up
@@ -168,8 +164,8 @@
      * Initialize slick carousel
      * @return {void}
      */
-    _initSlick: function() {
-      $(".single-item").slick('reinit');
+    refreshSlick: function() {
+      $(".single-item").slick('refresh');
     }
   };
 
