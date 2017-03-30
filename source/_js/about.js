@@ -52,6 +52,10 @@
       self.$blog.fadeOut();
       // Fade in the about card
       self.$about.fadeIn();
+      // Unslick the tweets to avoid ill-format in homepage
+      if ($('.tweets-container').length) {
+        self._unslick();
+      }
       // Small timeout to drop the about card after that
       // the about card fade in and the blog fade out
       setTimeout(function() {
@@ -70,6 +74,10 @@
       // Fade in the blog after that the about card lifted up
       setTimeout(function() {
         self.$blog.fadeIn();
+        // Initialize slick once blog is restored in homepage
+        if ($('.tweets-container').length) {
+          self._initSlick();
+        }
       }, 500);
       // Fade out the about card after that the about card lifted up
       setTimeout(function() {
@@ -88,6 +96,10 @@
           // Fade in the blog after that the about card lifted up
           setTimeout(function() {
               self.$blog.fadeIn();
+            if ($('.tweets-container').length) {
+              // Initialize slick once blog is restored in homepage
+              self._initSlick();
+            }
           }, 500);
           // Fade out the about card after that the about card lifted up
           setTimeout(function() {
@@ -140,6 +152,29 @@
       }, 500, function() {
         self.$aboutCard.hide();
         self.$aboutCard.removeAttr('style');
+      });
+    },
+
+    /**
+     * Destroy the slick carousel
+     * @return {void}
+     */
+    _unslick: function() {
+      $(".single-item").slick('unslick');
+
+    },
+
+    /**
+     * Initialize slick carousel
+     * @return {void}
+     */
+    _initSlick: function() {
+      $(".single-item").slick({
+        dots: true,
+        prevArrow: false,
+        nextArrow: false,
+        autoplay: true,
+        autoplaySpeed: 3000
       });
     }
   };
