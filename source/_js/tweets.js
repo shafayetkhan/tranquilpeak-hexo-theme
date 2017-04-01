@@ -2,19 +2,20 @@
   'use strict';
   String.prototype.linkify = function() {
     return this.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&\?\/.=]+/, function(m) {
-      return m.link(m);
+      return '<a target="_blank" href="' + m + '">' + m + "</a>";
+
     });
   };
 
   String.prototype.hashify = function() {
     return this.replace(/\B#([A-Za-z0-9\/\.]*)/g, function(m) {
-      return '<a target="_new" href="http://twitter.com/search?q=' + m.replace('#','') + '">' + m + "</a>";
+      return '<a target="_blank" href="http://twitter.com/search?q=' + m.replace('#','') + '">' + m + "</a>";
     });
   };
 
   String.prototype.atify = function() {
     return this.replace(/@[\w]+/g, function(m) {
-      return '<a href="http://www.twitter.com/' + m.replace('@','') + '">' + m + "</a>";
+      return '<a href="http://www.twitter.com/' + m.replace('@','') + '"target="_blank">' + m + "</a>";
     });
   };
 
