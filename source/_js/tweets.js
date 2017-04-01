@@ -40,7 +40,10 @@
     run: function() {
       var self = this;
 
-      $.getJSON('http://shaf-io.appspot.com/tweets/9', self.processTweets);
+      setTimeout(function() {
+        $.getJSON('http://shaf-io.appspot.com/tweets/9', self.processTweets);
+      }, 1200);
+
       // self.processTweets(this.myTweets);
     },
 
@@ -58,7 +61,7 @@
           moment(tweet.created_at).fromNow() + '</small></div>';
       });
 
-      $('#tweets').html(html);
+      $('#tweets').hide().html(html).fadeIn('slow');
 
       $(".single-item").slick({
         dots: true,
