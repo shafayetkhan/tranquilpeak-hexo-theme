@@ -9,6 +9,20 @@
     width: 80%;
     color: #333;
     background: #ffffff;
+    text-rendering: optimizelegibility;
+    letter-spacing: -0.3px;
+    font-family:    map-get($font-families, 'post-content');
+    color:          map-get($colors, base);
+    font-weight:    400;
+    overflow:       hidden;
+    @include prefix('hypens', 'auto', 'webkit' 'moz');
+
+    /* img { */
+    /*     display:   block; */
+    /*     width:     auto; */
+    /*     max-width: 100%; */
+    /* } */
+
 }
 
 #tweets p {
