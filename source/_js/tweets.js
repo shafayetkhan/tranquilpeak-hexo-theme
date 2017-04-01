@@ -41,7 +41,10 @@
       var self = this;
 
       setTimeout(function() {
-        $.getJSON('http://shaf-io.appspot.com/tweets/9', self.processTweets);
+        $.getJSON('http://shaf-io.appspot.com/tweets/10',
+                  self.processTweets).error(function() {
+                    $('.tweets-container').fadeOut('slow');
+                  });
       }, 1200);
 
       // self.processTweets(this.myTweets);
@@ -57,19 +60,25 @@
       // });
 
       $.each(data, function(index, tweet){
-        html += '<div class="tweet-item"><p>' + tweet.text.linkify().hashify().atify() + '</p><small>' +
-          moment(tweet.created_at).fromNow() + '</small></div>';
+        if (tweet.text && tweet.created_at) {
+          html += '<div class="tweet-item"><p>' + tweet.text.linkify().hashify().atify() + '</p><small>' +
+            moment(tweet.created_at).fromNow() + '</small></div>';
+        }
       });
 
-      $('#tweets').hide().html(html).fadeIn('slow');
+      if (html) {
+        $('#tweets').hide().html(html).fadeIn('slow');
 
-      $(".single-item").slick({
-        dots: true,
-        prevArrow: false,
-        nextArrow: false,
-        autoplay: true,
-        autoplaySpeed: 3000
-      });
+        $(".single-item").slick({
+          dots: true,
+          prevArrow: false,
+          nextArrow: false,
+          autoplay: true,
+          autoplaySpeed: 3000
+        });
+      } else {
+        $('.tweets-container').fadeOut('slow');
+      }
     }
   };
 
