@@ -42,7 +42,7 @@
       var self = this;
 
       setTimeout(function() {
-        $.getJSON('http://shaf-io.appspot.com/tweets/10',
+        $.getJSON('https://shafio.herokuapp.com/tweets/10',
                   self.processTweets).error(function() {
                     $('.tweets-container').fadeOut('slow');
                   });
